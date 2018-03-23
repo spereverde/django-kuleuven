@@ -1,2 +1,2 @@
-# djangogirls-leuven
-Code from the Django Girls Tutorial - https://djangogirls.org/leuven/
+# django-kuleuven
+Sample django project using the KU Leuven housestyle
