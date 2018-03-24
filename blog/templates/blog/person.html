@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+  	{% if person %}
+
+  	<h2>{{person.preferredName}} {{person.surname}}</h2>
+  
+    <p>{{ person.nr }}</p>
+    
+{% endif %}
+
+
+<!--{% for key, values in person.items %}
+<p>{{values}}</p>
+{% endfor %}-->
+
+{% endblock %}

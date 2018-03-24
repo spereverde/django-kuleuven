@@ -17,3 +17,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Person(models.Model):
+    nr = models.CharField(max_length=8)
+    #firstName = models.CharField(max_length=200)
+    #lastName = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nr

@@ -19,20 +19,16 @@
 
         <nav class="local-header">
 			<div class="container container-relative">
-    			<h2><a href="#"><i class="material-icons">home</i> KU Leuven posts</a>
+    			<h2><a href="#"><i class="material-icons">home</i> KU Leuven wie is wie</a>
     			</h2>
   			</div>
         </nav>
         
         <div role="main">
             <div class="container">
-
-			<h1>KU Leuven Wie-is-wie</h1>
-
      
-			<div class="row">
-       {% get_person %}
-			</div>
+
+       			{% block content %}{% endblock %}
 			
              </div>
         </div>
@@ -56,8 +52,3 @@
     <script src="//stijl.kuleuven.be/releases/latest/js/all.min.js"></script>
   </body>
 </html>
-
-
-
-
-        
