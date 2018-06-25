@@ -2,11 +2,25 @@
 
 {% block content %}
 
-  	{% if person %}
+{% if person %}
 
-  	<h2>{{person.preferredName}} {{person.surname}}</h2>
-  
-    <p>{{ person.nr }}</p>
+	<!--{{ person.items }}-->
+
+	<h2>{{person.preferredName}} {{person.surname}}
+		{% if person.firstName %}
+			({{person.firstName}})
+		{% endif %}
+	</h2>
+	<p>{{ person.nr }}</p>
+	{% if person.mobilePhone %}
+		<p>{{ person.gender }}</p>
+	{% endif %}
+    
+{% endif %}
+
+{% if addresses %}
+
+	{{ addresses.items }}
     
 {% endif %}
 

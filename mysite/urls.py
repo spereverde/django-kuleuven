@@ -22,5 +22,5 @@ from blog.views import get_person
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'', include('blog.urls')),
-	url(r'^wiwo/', get_person),
+    url(r'^wiwo/(?P<unr>u[0-9]{7})/$', get_person)
 ]
