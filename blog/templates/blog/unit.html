@@ -1,0 +1,70 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+
+{% block content %}
+
+{% if unit %}
+
+	<div class="card card-contact card-block">
+		<h2 class="card-title">{{unit.ouDescription}}</h2>
+		<div class="vcard">
+			<div class="vcard-item">
+				<i class="material-icons vcard-icon">person</i>
+				<div class="name">{{unit.diensthoofd_ftie}}: {{unit.managerName}}</div>
+			</div>
+			<div class="vcard-item">
+				<i class="material-icons vcard-icon">location_on</i>
+				<div class="adr">
+					<span>{{unit.straat}} {{unit.huisnummer}}
+					{% if unit.busnr %}
+						- bus {{unit.busnr}}
+					{% endif %}
+					</span>
+					<br /><span>{{unit.postcode}} {{unit.gemeente}}</span>
+				</div>
+			</div>
+			{% if unit.phone %}
+			<div class="vcard-item">
+				<i class="material-icons vcard-icon">phone</i>
+				<div class="phone">{{unit.phone}}</div>
+			</div>
+			{% endif %}
+			{% if unit.website %}
+			<div class="vcard-item">
+				<i class="material-icons vcard-icon">language</i>
+				<div><a href="{{unit.website}}">website van deze eenheid</a></div>
+			</div>
+			{% endif %}
+			{% if unit.url_iweto %}
+			<div class="vcard-item">
+				<i class="material-icons vcard-icon">language</i>
+				<div><a href="{{unit.url_iweto}}">gegevens van deze eenheid in het onderzoeksportaal</a></div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	
+	<div class="card adminfo">
+		<div class="card-header">
+			<a href="#adminfo" data-toggle="collapse" aria-expanded="false" aria-controls="adminfo">administrative info</a>
+		</div>
+		<div class="card-block collapse" id="adminfo">
+			{{unit.adminfoNaam}}<br />
+			{{unit.adminfoEenheid}}<br />
+			{{unit.adminfoBudget}}
+		</div>
+	</div>
+
+	<ul>{% for cu in unit.regionalChildOUs %}
+		<li>{% get_unitlink cu.id %}</li>
+	{% endfor %}
+	</ul>
+
+{% endif %}
+
+<hr />
+{% for key, values in unit.items %}
+  {{key}}: {{values}}<br />
+{% endfor %}
+
+{% endblock %}

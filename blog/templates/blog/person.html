@@ -4,7 +4,7 @@
 
 {% if person %}
 
-	<!--{{ person.items }}-->
+	{{ person.items }}
 
 	<h2>{{person.preferredName}} {{person.surname}}
 		{% if person.firstName %}
@@ -19,8 +19,23 @@
 {% endif %}
 
 {% if addresses %}
-
-	{{ addresses.items }}
+	
+<!--{{ addresses }}-->
+<div class="row">
+{% for address in addresses %}
+	<div class="col-xs-12 col-md-4">
+	<div class="card card-gray card-block address">
+	{{ address.buildingDescription }} - {{ address.buildingNumber }}
+	{{ address.street }} {{ address.houseNr }}
+	{% if address.postBox %}
+		- bus {{address.postBox}}
+	<br />
+	{% endif %}
+	{{ address.postalCode }} {{ address.city }}
+	</div>
+	</div>
+{% endfor %}
+</div>
     
 {% endif %}
 

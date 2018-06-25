@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 
-from blog.views import get_person
+from blog.views import get_person, get_unit
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'', include('blog.urls')),
-    url(r'^wiwo/(?P<unr>u[0-9]{7})/$', get_person)
+    url(r'^wiwo/(?P<unr>u[0-9]{7})/$', get_person),
+    url(r'^org/(?P<onr>5[0-9]{7})/$', get_unit)
+    
 ]

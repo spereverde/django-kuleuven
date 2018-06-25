@@ -18,9 +18,16 @@ def get_person(request, unr):
     # r = requests.get(url, params=params)
     people = r.json()
     person = people['d']['results'][0]
-    addresses = person['WorkAddresses']['results'][0]
+    addresses = person['WorkAddresses']['results']
     # serializer = PersonSerializer(data=person)
 	# if serializer.is_valid():
         # person = serializer.save()
         # return render(request, 'blog/person.html', {'person': person})
     return render(request, 'blog/person.html', {'person': person, 'addresses': addresses})
+
+def get_unit(request, onr):
+    url = 'https://search-1.q.icts.kuleuven.be/v2/organigram/ou/{}'.format(onr)
+    r = requests.get(url)
+    unit = r.json()
+    unit = unit['_source']
+    return render(request, 'blog/unit.html', {'unit': unit})
