@@ -17,14 +17,15 @@ def current_time(format_string):
     return datetime.datetime.now().strftime(format_string)
 
 @register.simple_tag
-def get_unitlink(onr):
-    # return 'bla{}'.format(onr)
+def get_unit_link(onr):
     url = 'https://search-1.q.icts.kuleuven.be/v2/organigram/ou/{}'.format(onr)
     # import pdb; pdb.set_trace()
     r = requests.get(url)
     unit = r.json()
     unitname = unit['_source']['ouDescription']
-    return '<a href="{}">{}</a>'.format(onr, unitname)
+    unitlink = '<a href="../{}">{}</a>'.format(onr, unitname)
+    return mark_safe(unitlink)
+    
 
 # @register.simple_tag
 # def get_person():

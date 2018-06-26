@@ -1,9 +1,22 @@
 {% extends 'blog/base.html' %}
 {% load blog_tags %}
 
+{% block title %}KU Leuven organigram{% endblock %}
+
 {% block content %}
 
+<!--<p class="alert alert-warning">This information {{ is_cached|yesno:"is, is NOT"}} cached</p>-->
+
+<!--include "blog/unit_search" -->
+
 {% if unit %}
+
+	{% include 'blog/unit_regtree.html' %}
+	{% include 'blog/unit_globtree.html' %}
+
+	<a href="" class="btn btn-primary" data-toggle="modal" data-target="#regtree">Regional tree</a>
+	<a href="" class="btn btn-secondary" data-toggle="modal" data-target="#globtree">Global tree</a>
+	<p>&nbsp;</p>
 
 	<div class="card card-contact card-block">
 		<h2 class="card-title">{{unit.ouDescription}}</h2>
@@ -44,6 +57,7 @@
 		</div>
 	</div>
 	
+	{% if unit.adminfoNaam %}
 	<div class="card adminfo">
 		<div class="card-header">
 			<a href="#adminfo" data-toggle="collapse" aria-expanded="false" aria-controls="adminfo">administrative info</a>
@@ -54,17 +68,13 @@
 			{{unit.adminfoBudget}}
 		</div>
 	</div>
-
-	<ul>{% for cu in unit.regionalChildOUs %}
-		<li>{% get_unitlink cu.id %}</li>
-	{% endfor %}
-	</ul>
+	{% endif %}
 
 {% endif %}
 
-<hr />
+<!--<hr />
 {% for key, values in unit.items %}
   {{key}}: {{values}}<br />
 {% endfor %}
-
+-->
 {% endblock %}

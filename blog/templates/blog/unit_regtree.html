@@ -1,0 +1,36 @@
+{% load blog_tags %}
+
+<!-- Modal -->
+<div class="modal fade" id="regtree" tabindex="-1" role="dialog" aria-labelledby="regional" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ unit.ouDescription }} - Regional organisational chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% if unit.regionalParentOU %}
+                <ul>
+                    </li>{% get_unit_link unit.regionalParentOU %}</li>
+                {% endif %}
+                    <ul>
+                        <li><a href="#"><strong>{{ unit.ouDescription }}</strong></a>
+                            <ul>
+                            {% for cu in unit.regionalChildOUs %}
+                                <li>{% get_unit_link cu.id %}</li>
+                            {% endfor %}
+                            </ul>
+                        </li>	
+                    </ul>
+                {% if unit.regionalParentOU %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
